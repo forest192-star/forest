@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>산림청 대표포털 - 대한민국 산림청 (Korea Forest Service)</title>
+  <!-- Tailwind CSS CDN with custom Sora Blue (Sky/Cerulean/Cyan/Ice Blue) Theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sora: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',   /* 화사한 소라색 */
+              500: '#0ea5e9',   /* 비비드 소라 블루 */
+              600: '#0284c7',   /* 메인 딥 소라색 */
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+              950: '#082f49',   /* 깊은 밤하늘 소라색 */
+            },
+            gov: {
+              blue: '#003764',   /* 대한민국 정부청색 */
+              red: '#e4032e',    /* 대한민국 정부적색 */
+              gray: '#575757',   /* 대한민국 정부 표준 텍스트 회색 */
+            }
+          },
+          boxShadow: {
+            'glow-sora': '0 0 25px -3px rgba(56, 189, 248, 0.45), 0 8px 16px -4px rgba(14, 165, 233, 0.3)',
+            'glow-cyan': '0 0 30px -4px rgba(6, 182, 212, 0.5)',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+    }
+    .serif-title {
+      font-family: 'Noto Serif KR', serif;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0f9ff;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #082f49;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #38bdf8, #0284c7);
+      border-radius: 5px;
+    }
+    
+    /* Glassmorphism Styles */
+    .glass-sora {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .dark .glass-sora {
+      background: rgba(8, 47, 73, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Hero Background */
+    .hero-sora-bg {
+      background: linear-gradient(135deg, rgba(8, 47, 73, 0.94) 0%, rgba(2, 132, 199, 0.88) 50%, rgba(14, 165, 233, 0.82) 100%), 
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+    .dark .hero-sora-bg {
+      background: linear-gradient(135deg, rgba(3, 21, 38, 0.97) 0%, rgba(7, 89, 133, 0.92) 50%, rgba(12, 74, 110, 0.95) 100%), 
+                  url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    }
+
+    /* Animated Glow Gradient Text */
+    .gradient-text-sora {
+      background: linear-gradient(135deg, #0284c7 0%, #38bdf8 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dark .gradient-text-sora {
+      background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 50%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-sora-50/60 dark:bg-[#051829] text-slate-800 dark:text-slate-100 antialiased selection:bg-sora-400 selection:text-white transition-colors duration-200">
+
+  <!-- Top Utility Bar -->
+  <div class="bg-gradient-to-r from-sora-100/90 via-sky-50 to-cyan-100/80 dark:from-sora-950 dark:via-[#07253d] dark:to-sora-900 border-b border-sora-200/80 dark:border-sora-800/60 text-xs text-sora-900 dark:text-sora-200 py-2 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-sora-500 shadow-[0_0_8px_#38bdf8] animate-pulse"></span>
+        <span class="font-bold text-sora-800 dark:text-sora-200">대한민국 정부 공식기관</span>
+        <span class="text-sora-300 dark:text-sora-700">|</span>
+        <span class="hidden sm:inline font-medium text-sora-700 dark:text-sora-300">푸른 숲과 맑은 하늘, 산림청 대국민 포털에 오신 것을 환영합니다.</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-semibold">
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle" onclick="toggleDarkMode()" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 dark:bg-sora-900/80 border border-sora-300 dark:border-sora-700 text-sora-800 dark:text-sora-100 hover:bg-sora-100 dark:hover:bg-sora-800 shadow-sm transition">
+          <i data-lucide="moon" id="theme-icon" class="w-3.5 h-3.5 text-sora-600 dark:text-cyan-300"></i>
+          <span id="theme-text" class="text-[11px] font-bold">야간모드</span>
+        </button>
+        <span class="text-sora-300 dark:text-sora-700">|</span>
+        <span class="text-sora-700 dark:text-sora-300 font-extrabold cursor-pointer hover:underline">KOR</span>
+        <span class="hover:text-sora-950 dark:hover:text-white cursor-pointer transition">ENG</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation (대한민국 정부 표준 산림청 공식 로고 적용) -->
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#072238]/95 backdrop-blur-md border-b border-sora-200/80 dark:border-sora-800 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- 대한민국 정부상징 공식 산림청 로고 (원문 벡터 SVG 적용) -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        
+        <!-- 대한민국 정부 공식 태극 문양 벡터 (173.282x173.282 규격) -->
+        <svg class="w-10 h-10 flex-shrink-0" viewBox="0 0 173.282 173.282" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#003764" d="M127.389 80.598c-13.791-9.365-31.439-5.542-40.717 8.533-7.72 11.767-19.405 13.235-23.906 13.235-14.751 0-24.824-10.367-27.818-21.095h-.01c-.039-.108-.059-.2-.09-.307-.025-.12-.056-.233-.089-.366-1.177-4.467-1.467-6.609-1.467-11.368 0-25.65 26.321-54.213 64.215-54.213 38.829 0 61.05 29.545 66.78 45.979-.107-.295-.209-.581-.291-.877-11.015-32.125-41.474-55.216-77.357-55.216-45.13 0-81.729 36.59-81.729 81.739 0 40.351 29.108 74.891 69.479 74.891 32.197 0 53.842-18.052 63.757-42.93 5.45-13.614 1.595-29.605-10.757-38.005"/>
+          <path fill="#e4032e" d="M164.788 62.589c-4.777-16.026-27.153-47.571-67.282-47.571-37.894 0-64.214 28.563-64.214 54.212 0 4.759.29 6.901 1.466 11.368-.489-1.951-.74-3.908-.74-5.823 0-26.721 26.741-45.227 54.248-45.227 37.218 0 67.388 30.174 67.388 67.39 0 29.173-16.785 54.437-41.179 66.565v.023c31.455-11.391 53.908-41.512 53.908-76.884 0-8.378-1.127-15.759-3.595-24.053"/>
+        </svg>
+
+        <!-- 대한민국 정부 공식 CI 전용 글꼴 디자인(정음체 기반 산림청 벡터) -->
+        <div class="flex items-center gap-2">
+          <svg class="h-10 w-auto" viewBox="900 180 950 420" fill="currentColor">
+            <!-- '대한민국 정부' 상단 텍스트 -->
+            <text x="940" y="240" font-family="'Pretendard', 'Noto Sans KR', sans-serif" font-size="62" font-weight="700" letter-spacing="1" class="fill-[#575757] dark:fill-slate-300">대한민국 정부</text>
+            <!-- 정부 공식 서체 '산림청' 벡터 아웃라인 -->
+            <g class="fill-[#003764] dark:fill-white">
+              <!-- '산' -->
+              <path d="M1008.3966,282.5345l87.4359,145.5078l-28.7109,17.2936l-58.725-101.1413l-58.072,103.4236l-29.3624-17.2907L1008.3966,282.5345z M977.4019,467.8471v63.616h191.183v31.3226H942.1675v-94.9386H977.4019z M1161.4087,466.2148h-35.2358v-182.048h35.2358v66.8806h40.7812v34.9107h-40.7812V466.2148z"/>
+              <!-- '림' -->
+              <path d="M1417.6921,437.5039h-153.3357v-86.783h114.8396v-28.3845h-114.8396v-30.0139h150.074v87.1094h-115.166V408.14h118.4277V437.5039z M1280.3414,457.4062h222.5028v105.3795h-222.5028V457.4062z M1467.9363,487.423h-152.6855v45.0195h152.6855V487.423z M1467.6099,284.1668h35.2344v158.5575h-35.2344V284.1668z"/>
+              <!-- '청' -->
+              <path d="M1569.78,338.3242v-29.6875h66.557v-27.7344h37.5181v27.7344h63.2925v29.6875h-68.5129l71.123,72.4275l-23.4905,21.8582l-61.3351-63.616l-60.3572,68.8365l-24.142-22.5112l71.1216-76.995H1569.78z M1796.5253,507.9726c0,9.575-1.9586,18.5454-5.8733,26.9169c-3.9146,8.3714-9.135,15.7124-15.6584,22.0229c-6.7449,6.3048-14.6309,11.3067-23.6538,15.0084c-9.0286,3.696-18.5454,5.5441-28.5477,5.5441c-10.0065,0-19.5745-1.848-28.7095-5.5441c-9.135-3.7017-17.0779-8.7036-23.817-15.0084c-6.5248-6.3105-11.7452-13.6515-15.6599-22.0229c-3.9146-8.3715-5.8733-17.3419-5.8733-26.9169c0-9.5665,1.9587-18.5937,5.8733-27.0758c3.9147-8.4821,9.1351-15.8742,15.6599-22.1847c6.7391-6.3076,14.682-11.3067,23.817-15.0084c9.135-3.696,18.703-5.5469,28.7095-5.5469c10.0023,0,19.5192,1.8509,28.5477,5.5469c9.0229,3.7017,16.9089,8.7007,23.6538,15.0084c6.5234,6.3105,11.7439,13.7026,15.6584,22.1847C1794.5667,489.3789,1796.5253,498.4061,1796.5253,507.9726z M1761.9425,507.6462c0-10.6538-3.9147-19.8427-11.7454-27.5641c-7.8292-7.7185-17.0778-11.582-27.7316-11.582c-10.6594,0-19.8499,3.8635-27.5669,11.582c-7.7228,7.7214-11.582,16.9103-11.582,27.5641c0,10.6594,3.8593,19.7945,11.582,27.4052c7.717,7.6135,16.9075,11.4202,27.5669,11.4202c10.6538,0,19.9023-3.8068,27.7316-11.4202C1758.0278,527.4407,1761.9425,518.3056,1761.9425,507.6462z M1785.4315,443.0508v-64.5982h-49.5898v-30.3404h49.5898v-63.9453h35.2358v158.8839H1785.4315z"/>
+            </g>
+          </svg>
+          <span class="text-xs font-bold text-white bg-gradient-to-r from-sora-500 to-cyan-500 px-2.5 py-0.5 rounded-full shadow-sm shadow-sora-400/40">
+            대국민 알림마당
+          </span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center space-x-7 text-[15px] font-bold text-slate-700 dark:text-slate-200">
+        <a href="#about" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2">산림청 소개</a>
+        <a href="#missions" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2">6대 핵심업무</a>
+        <a href="#direct-payment" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2 flex items-center gap-1.5 text-sora-600 dark:text-sora-300">
+          <span>임업직불제도</span>
+          <span class="text-[10px] bg-gradient-to-r from-amber-500 to-orange-400 text-white px-2 py-0.5 rounded-full font-black animate-pulse">NEW</span>
+        </a>
+        <a href="#calculator" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2">탄소흡수 계산기</a>
+        <a href="#services" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2">국민 숲 라이프</a>
+        <a href="#quiz" class="hover:text-sora-600 dark:hover:text-sora-300 transition py-2">숲 퀴즈</a>
+      </nav>
+
+      <!-- Alert Button -->
+      <div class="flex items-center space-x-3">
+        <a href="#alert-section" class="flex items-center gap-2 text-xs md:text-sm font-black bg-rose-500/10 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 px-4 py-2 rounded-2xl transition border border-rose-300 dark:border-rose-800 shadow-sm">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+          </span>
+          산불·산사태 경보
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative hero-sora-bg text-white py-28 md:py-36 px-4 sm:px-6 lg:px-8 overflow-hidden shadow-2xl">
+    
+    <!-- Decorative Glowing Aura Spheres -->
+    <div class="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-cyan-400/20 blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-sora-300/20 blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/20 dark:bg-sora-950/60 backdrop-blur-md border border-white/30 text-sora-100 text-xs md:text-sm font-bold mb-6 shadow-glow-sora">
+        <i data-lucide="sparkles" class="w-4 h-4 text-cyan-300 animate-spin" style="animation-duration: 6s;"></i> 대한민국 국토의 63%를 지키는 푸른 하늘과 숲의 파트너
+      </div>
+      <h1 class="serif-title text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 tracking-tight drop-shadow-md">
+        맑은 하늘과 푸른 숲,<br>
+        <span class="bg-gradient-to-r from-cyan-200 via-sora-200 to-white bg-clip-text text-transparent">국민과 미래를</span> 가치있게
+      </h1>
+      <p class="text-sora-100 text-base sm:text-xl max-w-2xl font-light mb-12 leading-relaxed drop-shadow">
+        산림청은 재해로부터 국민의 생명을 지키고, 푸른 숲으로 맑은 공기와 힐링을 선물하며, 
+        탄소중립과 지속가능한 임업의 밝은 미래를 열어갑니다.
+      </p>
+
+      <!-- Quick Action Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl pt-2">
+        
+        <div class="glass-sora text-slate-800 dark:text-slate-100 p-5 rounded-3xl shadow-xl border border-white/70 dark:border-sora-700/60 hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 border-t-4 border-t-rose-500">
+          <div class="w-10 h-10 rounded-2xl bg-rose-100 dark:bg-rose-950/70 text-rose-500 flex items-center justify-center mb-3">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-slate-500 dark:text-sora-300 font-bold">국민안전 최우선</div>
+          <div class="text-lg font-black text-slate-900 dark:text-white mt-0.5">산불·산사태 예방</div>
+        </div>
+
+        <div class="glass-sora text-slate-800 dark:text-slate-100 p-5 rounded-3xl shadow-xl border border-white/70 dark:border-sora-700/60 hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 border-t-4 border-t-sora-400">
+          <div class="w-10 h-10 rounded-2xl bg-sora-100 dark:bg-sora-950/70 text-sora-500 flex items-center justify-center mb-3">
+            <i data-lucide="cloud-sun" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-slate-500 dark:text-sora-300 font-bold">기후위기 대응</div>
+          <div class="text-lg font-black text-slate-900 dark:text-white mt-0.5">탄소흡수원 확충</div>
+        </div>
+
+        <div class="glass-sora text-slate-800 dark:text-slate-100 p-5 rounded-3xl shadow-xl border border-white/70 dark:border-sora-700/60 hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 border-t-4 border-t-cyan-400">
+          <div class="w-10 h-10 rounded-2xl bg-cyan-100 dark:bg-cyan-950/70 text-cyan-600 flex items-center justify-center mb-3">
+            <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+          </div>
+          <div class="text-xs text-slate-500 dark:text-sora-300 font-bold">휴식과 힐링</div>
+          <div class="text-lg font-black text-slate-900 dark:text-white mt-0.5">산림치유·휴양복지</div>
+        </div>
+
+        <a href="#direct-payment" class="glass-sora text-slate-800 dark:text-slate-100 p-5 rounded-3xl shadow-xl border border-white/70 dark:border-sora-700/60 hover:-translate-y-2 hover:shadow-glow-cyan transition duration-300 border-t-4 border-t-amber-400 block group">
+          <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950/70 text-amber-600 flex items-center justify-center mb-3">
+            <i data-lucide="coins" class="w-5 h-5 group-hover:scale-110 transition"></i>
+          </div>
+          <div class="text-xs text-slate-500 dark:text-sora-300 font-bold">임업인 소득보전</div>
+          <div class="text-lg font-black text-slate-900 dark:text-white mt-0.5 flex items-center justify-between">
+            <span>임업직불제도</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-amber-500 group-hover:translate-x-1 transition"></i>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Real-time Alerts Banner -->
+  <section id="alert-section" class="bg-gradient-to-r from-rose-50 via-sora-50 to-sky-50 dark:from-rose-950/40 dark:via-[#092237] dark:to-sora-950/50 border-y border-sora-200 dark:border-sora-800 py-3.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-xl bg-gradient-to-r from-rose-500 to-rose-600 text-white text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-rose-500/25">
+          <i data-lucide="flame" class="w-3.5 h-3.5 animate-bounce"></i> 경보 현황
+        </span>
+        <p class="text-sm font-bold text-slate-800 dark:text-slate-100">
+          전국 건조특보 발효 중: <strong class="text-rose-600 dark:text-rose-400 font-extrabold">산불위험 '주의' 단계</strong> — 산행 시 인화물질 휴대 금지 및 불씨 관리에 주의바랍니다!
+        </p>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-bold self-end md:self-auto text-sora-900 dark:text-sora-200">
+        <span class="flex items-center gap-1 text-rose-600 dark:text-rose-400 font-black"><i data-lucide="phone-call" class="w-3.5 h-3.5"></i> 산불신고: 119 또는 1688-3119</span>
+        <span class="text-sora-300 dark:text-sora-700">|</span>
+        <span class="flex items-center gap-1"><i data-lucide="phone" class="w-3.5 h-3.5 text-sora-500"></i> 산림청 민원: 1588-3249</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Forest Numbers -->
+  <section id="about" class="py-24 bg-white dark:bg-[#071f33] relative overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-sora-200/40 dark:bg-sora-700/10 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sora-600 dark:text-sora-300 font-extrabold text-xs tracking-widest uppercase bg-sora-100 dark:bg-sora-900/60 px-4 py-1.5 rounded-full border border-sora-300 dark:border-sora-700 shadow-sm">
+          Korea Forest Service
+        </span>
+        <h2 class="serif-title text-3xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 mb-4">
+          숫자로 만나는 <span class="gradient-text-sora">우리 숲과 산림청</span>
+        </h2>
+        <p class="text-slate-600 dark:text-sora-200 leading-relaxed text-sm sm:text-base">
+          민둥산을 푸른 숲으로 가꿔낸 대한민국! 맑은 공기와 건강한 생태계를 위해 창출되는 놀라운 가치를 확인해보세요.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-sora-50 to-white dark:from-sora-950/70 dark:to-sora-900/40 border border-sora-200/80 dark:border-sora-800 hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 text-center group">
+          <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-sora-500 to-cyan-300 text-white flex items-center justify-center mb-5 shadow-lg shadow-sora-400/30 group-hover:scale-110 transition duration-300">
+            <i data-lucide="map" class="w-8 h-8"></i>
+          </div>
+          <div class="text-4xl font-black text-sora-600 dark:text-sora-300 mb-1">63%</div>
+          <div class="text-base font-bold text-slate-800 dark:text-white mb-2">국토 산림면적 비율</div>
+          <p class="text-xs text-slate-500 dark:text-sora-300 leading-relaxed">OECD 국가 중 핀란드, 일본, 스웨덴에 이은 세계적 수준의 산림 자원국입니다.</p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-sora-50 to-white dark:from-sora-950/70 dark:to-sora-900/40 border border-sora-200/80 dark:border-sora-800 hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 text-center group">
+          <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-cyan-500 to-teal-300 text-white flex items-center justify-center mb-5 shadow-lg shadow-cyan-400/30 group-hover:scale-110 transition duration-300">
+            <i data-lucide="banknote" class="w-8 h-8"></i>
+          </div>
+          <div class="text-4xl font-black text-cyan-600 dark:text-cyan-300 mb-1">259조 원</div>
+          <div class="text-base font-bold text-slate-800 dark:text-white mb-2">산림의 공익적 가치</div>
+          <p class="text-xs text-slate-500 dark:text-sora-300 leading-relaxed">국민 1인당 연간 약 499만 원에 달하는 맑은 공기와 수자원 혜택을 제공합니다.</p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-sora-50 to-white dark:from-sora-950/70 dark:to-sora-900/40 border border-sora-200/80 dark:border-sora-800 hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 text-center group">
+          <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-sky-400 to-indigo-400 text-white flex items-center justify-center mb-5 shadow-lg shadow-sky-400/30 group-hover:scale-110 transition duration-300">
+            <i data-lucide="cloud-rain" class="w-8 h-8"></i>
+          </div>
+          <div class="text-4xl font-black text-sky-600 dark:text-sky-300 mb-1">4,000만 톤</div>
+          <div class="text-base font-bold text-slate-800 dark:text-white mb-2">연간 온실가스 흡수량</div>
+          <p class="text-xs text-slate-500 dark:text-sora-300 leading-relaxed">2050 탄소중립 달성을 이끄는 가장 안전하고 확실한 천연 온실가스 흡수원입니다.</p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-sora-50 to-white dark:from-sora-950/70 dark:to-sora-900/40 border border-sora-200/80 dark:border-sora-800 hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 text-center group">
+          <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-amber-400 to-orange-400 text-white flex items-center justify-center mb-5 shadow-lg shadow-amber-400/30 group-hover:scale-110 transition duration-300">
+            <i data-lucide="compass" class="w-8 h-8"></i>
+          </div>
+          <div class="text-4xl font-black text-amber-600 dark:text-amber-300 mb-1">190+ 개소</div>
+          <div class="text-base font-bold text-slate-800 dark:text-white mb-2">국·공립 자연휴양림</div>
+          <p class="text-xs text-slate-500 dark:text-sora-300 leading-relaxed">치유원, 숲길, 숲속야영장 등 전 국민이 누리는 생애주기 휴양 힐링 인프라입니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: 6대 핵심 업무 상세 카드 -->
+  <section id="missions" class="py-24 bg-sora-50/70 dark:bg-[#051829] border-t border-sora-200/70 dark:border-sora-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+        <div>
+          <span class="text-sora-600 dark:text-sora-300 font-extrabold text-xs tracking-widest uppercase bg-white dark:bg-sora-900/60 px-4 py-1.5 rounded-full border border-sora-300 dark:border-sora-700 shadow-sm">
+            Core Missions
+          </span>
+          <h2 class="serif-title text-3xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4">
+            산림청 <span class="gradient-text-sora">6대 핵심업무</span>
+          </h2>
+          <p class="text-slate-600 dark:text-sora-200 mt-2 text-sm sm:text-base">국민의 생명과 미래를 위해 산림청이 수행하는 주요 역할을 알기 쉽게 소개합니다.</p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="mt-6 md:mt-0 flex flex-wrap gap-2" id="filter-container">
+          <button onclick="filterCards('all')" class="filter-btn active px-4 py-2 rounded-2xl text-sm font-black bg-gradient-to-r from-sora-500 to-cyan-500 text-white shadow-md shadow-sora-400/40 transition">전체보기</button>
+          <button onclick="filterCards('safety')" class="filter-btn px-4 py-2 rounded-2xl text-sm font-bold bg-white dark:bg-sora-900/60 text-slate-700 dark:text-sora-200 hover:bg-sora-100 dark:hover:bg-sora-800 border border-sora-200 dark:border-sora-700 transition">재해안전</button>
+          <button onclick="filterCards('eco')" class="filter-btn px-4 py-2 rounded-2xl text-sm font-bold bg-white dark:bg-sora-900/60 text-slate-700 dark:text-sora-200 hover:bg-sora-100 dark:hover:bg-sora-800 border border-sora-200 dark:border-sora-700 transition">기후·환경</button>
+          <button onclick="filterCards('welfare')" class="filter-btn px-4 py-2 rounded-2xl text-sm font-bold bg-white dark:bg-sora-900/60 text-slate-700 dark:text-sora-200 hover:bg-sora-100 dark:hover:bg-sora-800 border border-sora-200 dark:border-sora-700 transition">휴양·복지</button>
+          <button onclick="filterCards('economy')" class="filter-btn px-4 py-2 rounded-2xl text-sm font-bold bg-white dark:bg-sora-900/60 text-slate-700 dark:text-sora-200 hover:bg-sora-100 dark:hover:bg-sora-800 border border-sora-200 dark:border-sora-700 transition">경제·글로벌</button>
+        </div>
+      </div>
+
+      <!-- Missions Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="missions-grid">
+        
+        <!-- Card 1 -->
+        <div class="mission-card safety bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/60 text-rose-500 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="shield-alert" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 px-3 py-1 rounded-full uppercase">1. 산림 재해 안전망</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">산불·산사태·병해충 철통 방어</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              AI ICT 첨단 감시 드론, 초대형 진화헬기, 산불특수진화대로 골든타임을 사수합니다. 여름철에는 산사태 조기경보체계로 국민 인명 피해를 제로화합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 첨단 산불진화헬기 및 드론감시단 상시 가동</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 사방댐 확충 및 산사태 취약지 사전 정비</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 소나무재선충병 친환경 방제 및 산림보호</li>
+            </ul>
+          </div>
+          <button onclick="openModal('safety')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="mission-card eco bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-sora-100 dark:bg-sora-950/60 text-sora-500 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="cloud-sun" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-sora-600 dark:text-sora-300 bg-sora-50 dark:bg-sora-950/60 px-3 py-1 rounded-full uppercase">2. 탄소중립 & 숲가꾸기</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">2050 탄소중립 산림 구축</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              노령화된 숲을 활력 넘치는 젊은 숲으로 가꾸고, 미세먼지 차단숲 및 도시바람길숲을 조성하여 도심의 열섬현상을 완화하고 맑은 공기를 공급합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 생애주기 맞춤형 숲가꾸기로 흡수력 극대화</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 도시 바람길숲 및 미세먼지 차단숲 확충</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 산림탄소상쇄제도를 통한 기업 ESG 연계</li>
+            </ul>
+          </div>
+          <button onclick="openModal('carbon')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="mission-card welfare bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-cyan-100 dark:bg-cyan-950/60 text-cyan-600 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-cyan-600 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/60 px-3 py-1 rounded-full uppercase">3. 생애주기 산림복지</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">태어나서 황혼까지 숲과 함께</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              숲태교, 유아숲체험원부터 청소년 숲교육, 자연휴양림, 치유의 숲, 수목장림까지 국민의 전 생애에 걸친 힐링 산림복지 서비스를 제공합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 국·공립 자연휴양림 '숲나들e' 통합 예약망 운영</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 국립산림치유원 및 전국 치유의숲 힐링케어</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 취약계층 대상 산림복지서비스이용권(바우처)</li>
+            </ul>
+          </div>
+          <button onclick="openModal('welfare')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="mission-card economy bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="tree-pine" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-3 py-1 rounded-full uppercase">4. 친환경 국산목재 & 임업인</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">지속가능한 임업 생태계 조성</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              탄소를 영구 저장하는 국산 목재 이용을 활성화하고, 밤·표고버섯 등 청정 임산물을 생산하는 210만 임업인의 안정된 삶터를 지원합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> '아이러브우드(I LOVE WOOD)' 국산목재 보급</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 임업직불제 운영으로 산림 공익가치 보전</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 청정 K-임산물 명품 브랜드 육성 및 수출 지원</li>
+            </ul>
+          </div>
+          <button onclick="openModal('timber')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="mission-card eco bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="sprout" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1 rounded-full uppercase">5. 백두대간 & 생물다양성</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">한반도 생태축 복원과 희귀식물 보전</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              국토의 핵심 생태축인 백두대간을 보전하고, 멸종위기 구상나무 등 고산 침엽수종 복원과 국가 종자보존시설 '시드볼트'를 영구 운영합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 전 세계 단 둘뿐인 영구종자저장고 '시드볼트' 운영</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 단절된 백두대간 산림생태회랑 연결 복원 사업</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 국립수목원·세종수목원 식물 보전 연구 인프라</li>
+            </ul>
+          </div>
+          <button onclick="openModal('biodiversity')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="mission-card economy bg-white dark:bg-[#08243c] rounded-3xl p-8 border border-sora-200/80 dark:border-sora-800 shadow-lg hover:shadow-glow-sora hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-teal-100 dark:bg-teal-950/60 text-teal-600 flex items-center justify-center mb-6 shadow-sm">
+              <i data-lucide="globe" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-black text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-950/60 px-3 py-1 rounded-full uppercase">6. 국제산림협력 & K-포레스트</span>
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mt-3 mb-2">글로벌 산림녹화 선도 & 평화협력</h3>
+            <p class="text-slate-600 dark:text-sora-200 text-sm leading-relaxed mb-5">
+              세계산림총회(WFC) 개최 등 글로벌 산림외교를 선도하고, 개도국 사막화 방지 조림(ODA)과 해외 탄소배출권(REDD+) 사업을 추진합니다.
+            </p>
+            <ul class="text-xs text-slate-600 dark:text-sora-300 space-y-2 border-t border-sora-100 dark:border-sora-800 pt-4">
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 몽골·중앙아시아 사막화 방지 그린벨트 조림 지원</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 개발도상국 열대우림 보전 해외 탄소배출권 확보</li>
+              <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-sora-500"></i> 한반도 평화와 생태계 연결을 위한 남북산림협력</li>
+            </ul>
+          </div>
+          <button onclick="openModal('global')" class="mt-8 text-sm font-black text-sora-600 dark:text-sora-300 hover:text-sora-700 flex items-center gap-1.5 group transition">
+            자세히 알아보기 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 임업직불제도 -->
+  <section id="direct-payment" class="py-24 bg-white dark:bg-[#071f33] border-t border-sora-200/80 dark:border-sora-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-14">
+        <div>
+          <span class="inline-flex items-center gap-1.5 text-sora-600 dark:text-sora-300 font-black text-xs tracking-wider uppercase bg-sora-100 dark:bg-sora-900/60 px-4 py-1.5 rounded-full border border-sora-300 dark:border-sora-700 shadow-sm">
+            <i data-lucide="badge-percent" class="w-4 h-4 text-cyan-500"></i> Forest Direct Payment System
+          </span>
+          <h2 class="serif-title text-3xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4">
+            산림청 <span class="gradient-text-sora">임업직불제도</span> 안내
+          </h2>
+          <p class="text-slate-600 dark:text-sora-200 mt-2 text-sm sm:text-base max-w-2xl">
+            산림이 선물하는 연간 259조 원의 공익기능을 지키는 210만 임업인의 안정된 소득을 위해 정부가 직접 직불금을 지급하는 든든한 소득안전망입니다.
+          </p>
+        </div>
+        <a href="https://pay.forest.go.kr" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sora-500 via-cyan-500 to-sky-400 hover:opacity-95 text-white font-black text-sm flex items-center gap-2 shadow-glow-sora transition self-start lg:self-auto hover:-translate-y-1">
+          <i data-lucide="external-link" class="w-4 h-4"></i> 임업-in 통합포털 신청 바로가기
+        </a>
+      </div>
+
+      <!-- 3 Types of Direct Payment -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mb-12">
+        
+        <!-- Type 1 -->
+        <div class="bg-gradient-to-b from-sora-50/60 to-white dark:from-[#092842] dark:to-[#071f33] p-8 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:shadow-glow-sora transition duration-300 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-400 text-white flex items-center justify-center mb-5 shadow-md shadow-amber-400/30 group-hover:scale-110 transition">
+            <i data-lucide="home" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-black text-amber-700 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/60 px-2.5 py-1 rounded-md">소규모 영세 임가 보호</span>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-3 mb-2">소규모임가 직불금</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 leading-relaxed mb-6">
+            0.1ha 이상 ~ 0.5ha 이하의 산지에서 임산물을 생산하며 농산촌에 거주하는 영세 임가를 위한 정액 지원금입니다.
+          </p>
+          <div class="p-4 bg-white dark:bg-sora-950/80 rounded-2xl border border-sora-200/80 dark:border-sora-700/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 dark:text-sora-400 font-bold">지급 단가 (연간 정액)</div>
+            <div class="text-2xl font-black text-amber-600 dark:text-amber-400 mt-0.5">가구당 연 130만 원</div>
+          </div>
+        </div>
+
+        <!-- Type 2 -->
+        <div class="bg-gradient-to-b from-sora-50/60 to-white dark:from-[#092842] dark:to-[#071f33] p-8 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:shadow-glow-sora transition duration-300 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sora-500 to-cyan-400 text-white flex items-center justify-center mb-5 shadow-md shadow-sora-400/30 group-hover:scale-110 transition">
+            <i data-lucide="apple" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-black text-sora-700 dark:text-sora-300 bg-sora-100 dark:bg-sora-950/60 px-2.5 py-1 rounded-md">청정 임산물 재배</span>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-3 mb-2">임산물생산업 직불금</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 leading-relaxed mb-6">
+            밤, 잣, 표고버섯, 산나물, 약초 등 임산물을 실제로 채취·재배하는 산지를 대상으로 면적 구간에 따라 차등 지급합니다.
+          </p>
+          <div class="p-4 bg-white dark:bg-sora-950/80 rounded-2xl border border-sora-200/80 dark:border-sora-700/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 dark:text-sora-400 font-bold">지급 단가 (면적별 차등)</div>
+            <div class="text-2xl font-black text-sora-600 dark:text-sora-300 mt-0.5">ha당 70만 ~ 94만 원</div>
+          </div>
+        </div>
+
+        <!-- Type 3 -->
+        <div class="bg-gradient-to-b from-sora-50/60 to-white dark:from-[#092842] dark:to-[#071f33] p-8 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:shadow-glow-sora transition duration-300 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-teal-400 text-white flex items-center justify-center mb-5 shadow-md shadow-cyan-400/30 group-hover:scale-110 transition">
+            <i data-lucide="axe" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-black text-cyan-700 dark:text-cyan-300 bg-cyan-100 dark:bg-cyan-950/60 px-2.5 py-1 rounded-md">나무심기 & 숲가꾸기</span>
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-3 mb-2">육림업 직불금</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 leading-relaxed mb-6">
+            나무를 심고 가꾸며(조림·숲가꾸기), 산림의 공익기능을 높이는 산림경영계획 인가 산지에 면적별로 차등 지급합니다.
+          </p>
+          <div class="p-4 bg-white dark:bg-sora-950/80 rounded-2xl border border-sora-200/80 dark:border-sora-700/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 dark:text-sora-400 font-bold">지급 단가 (면적별 차등)</div>
+            <div class="text-2xl font-black text-cyan-600 dark:text-cyan-300 mt-0.5">ha당 32만 ~ 62만 원</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Eligibility & Steps Card -->
+      <div class="bg-gradient-to-br from-[#082a45] via-[#053d66] to-[#035282] text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-sora-400/30">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none"></div>
+
+        <h4 class="text-2xl font-black mb-6 flex items-center gap-2.5">
+          <i data-lucide="check-circle-2" class="w-6 h-6 text-cyan-300"></i> 임업직불금 신청 대상 및 핵심 자격 요건
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/15 hover:bg-white/15 transition">
+            <div class="text-cyan-300 font-black mb-1.5 text-base">1. 산지 등록 요건</div>
+            <p class="text-xs text-sora-100 leading-relaxed">
+              2019.4.1 ~ 2022.9.30까지 <strong>임업경영체 등록</strong>이 완료된 산지 대상
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/15 hover:bg-white/15 transition">
+            <div class="text-cyan-300 font-black mb-1.5 text-base">2. 종사 및 판매 실적</div>
+            <p class="text-xs text-sora-100 leading-relaxed">
+              연간 60일 이상 임업 종사 또는 임산물 연간 120만 원 이상 판매 실적 충족
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/15 hover:bg-white/15 transition">
+            <div class="text-cyan-300 font-black mb-1.5 text-base">3. 소득 기준 대폭 완화</div>
+            <p class="text-xs text-sora-100 leading-relaxed">
+              농업·임업 외 종합소득금액 <strong>4,700만 원 미만</strong>으로 상향 완화 적용
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur p-5 rounded-2xl border border-white/15 hover:bg-white/15 transition">
+            <div class="text-cyan-300 font-black mb-1.5 text-base">4. 의무 준수 사항</div>
+            <p class="text-xs text-sora-100 leading-relaxed">
+              산림경영일지 작성, 임업직불제 필수 의무교육 이수, 불법 임산물 채취 방지
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-semibold">
+          <div class="flex items-center gap-2 text-sora-200">
+            <i data-lucide="info" class="w-4 h-4 text-cyan-300"></i>
+            <span>신청 기간: 매년 3월 ~ 4월경 집중 접수 ('임업-in' 온라인 또는 산지 관할 읍·면·동 행정복지센터 접수)</span>
+          </div>
+          <div class="text-cyan-300 font-bold bg-white/10 px-3.5 py-1.5 rounded-full border border-cyan-400/30">
+            상담 문의: 산림청 대표 콜센터 1588-3249
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Carbon Calculator -->
+  <section id="calculator" class="py-24 bg-sora-50/70 dark:bg-[#051829] border-t border-sora-200/80 dark:border-sora-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-[#0284c7] via-[#0369a1] to-[#0c4a6e] text-white rounded-3xl p-8 sm:p-14 shadow-glow-sora relative overflow-hidden border border-sora-300/40">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-cyan-300/20 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-2xl">
+          <span class="text-cyan-200 font-black text-xs uppercase tracking-widest flex items-center gap-2 mb-3">
+            <i data-lucide="calculator" class="w-4 h-4"></i> 국민 체감 시뮬레이터
+          </span>
+          <h2 class="serif-title text-3xl sm:text-5xl font-black mb-4">나의 탄소발자국, 소나무 몇 그루가 지울까?</h2>
+          <p class="text-sora-100 text-sm sm:text-base leading-relaxed mb-8">
+            산림청은 탄소중립 실현을 위해 매년 수천만 그루의 건강한 나무를 심고 있습니다. 일상생활 배출량을 상쇄하기 위해 필요한 30년생 소나무 수를 계산해보세요.
+          </p>
+
+          <div class="space-y-6 bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/20">
+            <div>
+              <label class="block text-sm font-bold mb-2 flex justify-between">
+                <span>한 달 승용차 주행거리 (km)</span>
+                <span class="text-cyan-200 font-black text-base" id="drive-val">500 km</span>
+              </label>
+              <input type="range" id="drive-input" min="0" max="2500" step="50" value="500" class="w-full h-2.5 bg-sora-950/60 rounded-lg appearance-none cursor-pointer accent-cyan-300" oninput="calcCarbon()">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold mb-2 flex justify-between">
+                <span>한 달 가구 전기 사용량 (kWh)</span>
+                <span class="text-cyan-200 font-black text-base" id="elec-val">250 kWh</span>
+              </label>
+              <input type="range" id="elec-input" min="0" max="800" step="10" value="250" class="w-full h-2.5 bg-sora-950/60 rounded-lg appearance-none cursor-pointer accent-cyan-300" oninput="calcCarbon()">
+            </div>
+
+            <div>
+              <label class="block text-sm font-bold mb-2 flex justify-between">
+                <span>한 주간 일회용 컵/용기 사용 (개)</span>
+                <span class="text-cyan-200 font-black text-base" id="cup-val">7 개</span>
+              </label>
+              <input type="range" id="cup-input" min="0" max="30" step="1" value="7" class="w-full h-2.5 bg-sora-950/60 rounded-lg appearance-none cursor-pointer accent-cyan-300" oninput="calcCarbon()">
+            </div>
+          </div>
+
+          <!-- Result Display -->
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-sora-950/50 p-6 rounded-2xl border border-white/20">
+              <div class="text-xs text-sora-200 font-bold">연간 예상 탄소 배출량</div>
+              <div class="text-3xl sm:text-4xl font-black mt-1 text-white"><span id="carbon-total">2,340</span> kg CO₂</div>
+            </div>
+            <div class="bg-gradient-to-r from-cyan-500/40 to-sora-400/40 p-6 rounded-2xl border border-cyan-300/50 flex items-center justify-between shadow-inner">
+              <div>
+                <div class="text-xs text-cyan-100 font-bold">필요한 30년생 소나무</div>
+                <div class="text-3xl sm:text-4xl font-black mt-1 text-cyan-200"><span id="trees-needed">355</span> 그루 / 년</div>
+              </div>
+              <div class="text-5xl animate-bounce">🌲</div>
+            </div>
+          </div>
+          
+          <div class="mt-4 text-xs text-sora-200 text-right">
+            * 국립산림과학원 30년생 소나무 표준 탄소흡수량(연간 약 6.6kg/그루) 기준 산출
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: 대국민 원스톱 서비스 -->
+  <section id="services" class="py-24 bg-white dark:bg-[#071f33] border-t border-sora-200/80 dark:border-sora-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sora-600 dark:text-sora-300 font-extrabold text-xs tracking-widest uppercase bg-sora-100 dark:bg-sora-900/60 px-4 py-1.5 rounded-full border border-sora-300 dark:border-sora-700 shadow-sm">
+          Public Service
+        </span>
+        <h2 class="serif-title text-3xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4">
+          국민을 위한 <span class="gradient-text-sora">산림 통합포털 서비스</span>
+        </h2>
+        <p class="text-slate-600 dark:text-sora-200 mt-2 text-sm sm:text-base">휴양림 예약부터 국가숲길 탐방, 바우처 지원까지 간편하게 신청하세요.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        
+        <div class="bg-sora-50/60 dark:bg-sora-900/40 p-7 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sora-500 to-cyan-400 text-white flex items-center justify-center mb-5 shadow-md shadow-sora-400/30 group-hover:scale-110 transition">
+            <i data-lucide="tent" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-xl mb-1">숲나들e</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 mb-5 leading-relaxed">전국 190여 개 국·공·사립 자연휴양림 통합 원스톱 예약 플랫폼</p>
+          <span class="inline-flex items-center text-xs font-black text-sora-600 dark:text-sora-300 group-hover:underline">
+            휴양림 예약하기 <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+          </span>
+        </div>
+
+        <div class="bg-sora-50/60 dark:bg-sora-900/40 p-7 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-sky-400 text-white flex items-center justify-center mb-5 shadow-md shadow-cyan-400/30 group-hover:scale-110 transition">
+            <i data-lucide="footprints" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-xl mb-1">국가숲길 안내</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 mb-5 leading-relaxed">지리산둘레길, 대관령숲길 등 품격 높은 국가숲길 코스 및 안전지도</p>
+          <span class="inline-flex items-center text-xs font-black text-cyan-600 dark:text-cyan-300 group-hover:underline">
+            코스 지도 확인 <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+          </span>
+        </div>
+
+        <div class="bg-sora-50/60 dark:bg-sora-900/40 p-7 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-400 to-orange-400 text-white flex items-center justify-center mb-5 shadow-md shadow-amber-400/30 group-hover:scale-110 transition">
+            <i data-lucide="flower" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-xl mb-1">국가수목원·정원</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 mb-5 leading-relaxed">국립수목원(광릉), 세종수목원, 백두대간수목원 및 순천만·태화강 정원</p>
+          <span class="inline-flex items-center text-xs font-black text-amber-600 dark:text-amber-300 group-hover:underline">
+            관람 안내 <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+          </span>
+        </div>
+
+        <div class="bg-sora-50/60 dark:bg-sora-900/40 p-7 rounded-3xl border border-sora-200 dark:border-sora-700/80 shadow-md hover:-translate-y-2 hover:shadow-glow-sora transition duration-300 group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-400 to-pink-500 text-white flex items-center justify-center mb-5 shadow-md shadow-rose-400/30 group-hover:scale-110 transition">
+            <i data-lucide="ticket" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 dark:text-white text-xl mb-1">산림복지이용권</h3>
+          <p class="text-xs text-slate-600 dark:text-sora-300 mb-5 leading-relaxed">취약계층을 위한 1인당 10만 원 상당의 산림복지 전용 바우처 지원</p>
+          <span class="inline-flex items-center text-xs font-black text-rose-600 dark:text-rose-300 group-hover:underline">
+            이용권 신청 <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Forest Quiz -->
+  <section id="quiz" class="py-24 bg-sora-50/70 dark:bg-[#051829] border-t border-sora-200/80 dark:border-sora-800">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-b from-white to-sora-50 dark:from-[#092842] dark:to-[#061e33] rounded-3xl p-8 sm:p-12 border border-sora-200 dark:border-sora-700 shadow-xl text-center">
+        <span class="inline-block px-4 py-1 bg-sora-100 dark:bg-sora-900 text-sora-700 dark:text-sora-300 text-xs font-black rounded-full uppercase border border-sora-300 dark:border-sora-700 mb-4">
+          재미있는 알쓸신잡 퀴즈
+        </span>
+        <h2 class="serif-title text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">산림 상식 OX 퀴즈!</h2>
+        <p class="text-sm text-slate-600 dark:text-sora-200 mb-8">산림청 업무와 우리 숲에 대한 유익한 상식을 테스트해보세요.</p>
+
+        <!-- Quiz Container -->
+        <div id="quiz-box" class="bg-white dark:bg-[#082238] p-6 sm:p-8 rounded-3xl shadow-sm border border-sora-200/80 dark:border-sora-700 text-left">
+          <div class="flex items-center justify-between text-xs font-black text-slate-400 mb-4">
+            <span id="quiz-step" class="text-sora-600 dark:text-sora-300">문제 1 / 3</span>
+            <span class="text-cyan-600 dark:text-cyan-400 font-extrabold text-sm" id="quiz-score">점수: 0점</span>
+          </div>
+          <h3 id="quiz-question" class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mb-6 min-h-[60px] leading-snug">
+            Q. 산림청은 기후변화와 재앙에 대비해 전 세계 야생식물 종자를 지하 깊은 곳에 영구 보존하는 '시드볼트(Seed Vault)'를 운영하고 있다?
+          </h3>
+
+          <div class="grid grid-cols-2 gap-4">
+            <button onclick="handleQuizAnswer(true)" class="py-4 bg-gradient-to-r from-sora-500 to-cyan-500 hover:opacity-95 text-white rounded-2xl font-black text-xl flex items-center justify-center gap-2 transition shadow-md shadow-sora-400/30">
+              <i data-lucide="circle" class="w-6 h-6"></i> 그렇다 (O)
+            </button>
+            <button onclick="handleQuizAnswer(false)" class="py-4 bg-gradient-to-r from-rose-500 to-red-600 hover:opacity-95 text-white rounded-2xl font-black text-xl flex items-center justify-center gap-2 transition shadow-md shadow-rose-500/30">
+              <i data-lucide="x" class="w-6 h-6"></i> 아니다 (X)
+            </button>
+          </div>
+
+          <div id="quiz-feedback" class="hidden mt-6 p-5 rounded-2xl text-sm leading-relaxed border font-medium"></div>
+          
+          <button id="quiz-next" onclick="nextQuiz()" class="hidden mt-5 w-full py-3.5 bg-gradient-to-r from-slate-900 to-sora-900 hover:from-slate-800 hover:to-sora-800 text-white rounded-2xl text-sm font-black transition shadow-lg">
+            다음 문제 풀기
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Mission Detail -->
+  <div id="modal" class="fixed inset-0 z-50 bg-sora-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#08243c] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 border border-sora-200 dark:border-sora-700">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modal-content">
+        <!-- Dynamic content inserted by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer (대한민국 정부상징 공식 산림청 로고 적용) -->
+  <footer class="bg-gradient-to-b from-[#082842] to-[#041624] text-sora-200 py-16 border-t border-sora-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="col-span-1 md:col-span-2">
+          
+          <!-- 하단 공식 CI 결합형 SVG 로고 -->
+          <div class="flex items-center gap-3.5 mb-5 cursor-pointer">
+            <svg class="w-10 h-10 flex-shrink-0" viewBox="0 0 173.282 173.282" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="86.64" cy="86.64" r="86.64" fill="#ffffff"/>
+              <path fill="#003764" d="M127.389 80.598c-13.791-9.365-31.439-5.542-40.717 8.533-7.72 11.767-19.405 13.235-23.906 13.235-14.751 0-24.824-10.367-27.818-21.095h-.01c-.039-.108-.059-.2-.09-.307-.025-.12-.056-.233-.089-.366-1.177-4.467-1.467-6.609-1.467-11.368 0-25.65 26.321-54.213 64.215-54.213 38.829 0 61.05 29.545 66.78 45.979-.107-.295-.209-.581-.291-.877-11.015-32.125-41.474-55.216-77.357-55.216-45.13 0-81.729 36.59-81.729 81.739 0 40.351 29.108 74.891 69.479 74.891 32.197 0 53.842-18.052 63.757-42.93 5.45-13.614 1.595-29.605-10.757-38.005"/>
+              <path fill="#e4032e" d="M164.788 62.589c-4.777-16.026-27.153-47.571-67.282-47.571-37.894 0-64.214 28.563-64.214 54.212 0 4.759.29 6.901 1.466 11.368-.489-1.951-.74-3.908-.74-5.823 0-26.721 26.741-45.227 54.248-45.227 37.218 0 67.388 30.174 67.388 67.39 0 29.173-16.785 54.437-41.179 66.565v.023c31.455-11.391 53.908-41.512 53.908-76.884 0-8.378-1.127-15.759-3.595-24.053"/>
+            </svg>
+            <div>
+              <span class="text-[11px] uppercase tracking-wider font-bold text-sora-300 block">대한민국 정부</span>
+              <span class="text-xl font-extrabold tracking-tight text-white">산림청 <span class="text-xs font-normal text-sora-300">(Korea Forest Service)</span></span>
+            </div>
+          </div>
+
+          <p class="text-xs leading-relaxed text-sora-300 max-w-md">
+            산림청은 푸른 숲과 맑은 하늘을 지키며, 기후변화에 대응하고 국민에게 안전과 행복을 주는 품격 높은 산림국가를 만들어갑니다.
+          </p>
+          <div class="mt-5 text-xs text-sora-200 space-y-1 font-medium">
+            <p>대전광역시 서구 청사로 189 정부대전청사 1동 | 대표전화: <strong class="text-white">1588-3249</strong></p>
+            <p>정부민원안내콜센터: 국번없이 <strong class="text-cyan-300">110</strong> (무료)</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white mb-4">재해·긴급 신고전화</h4>
+          <ul class="text-xs space-y-2.5 font-medium">
+            <li>산불 발생 긴급신고: <strong class="text-rose-400">119</strong> 또는 <strong class="text-rose-400">1688-3119</strong></li>
+            <li>산사태·산림피해 신고: <strong class="text-amber-300">1588-3249</strong></li>
+            <li>산악 조난 인명구조: <strong class="text-cyan-300">119 산악구조대</strong></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-black text-white mb-4">소속 및 산하기관</h4>
+          <ul class="text-xs space-y-2 text-sora-300 font-medium">
+            <li><a href="#" class="hover:text-cyan-300 transition">국립산림과학원</a></li>
+            <li><a href="#" class="hover:text-cyan-300 transition">국립수목원</a></li>
+            <li><a href="#" class="hover:text-cyan-300 transition">산림항공본부</a></li>
+            <li><a href="#" class="hover:text-cyan-300 transition">한국산림복지진흥원</a></li>
+            <li><a href="#" class="hover:text-cyan-300 transition">한국수목원정원관리원</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-sora-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-sora-400">
+        <p>© 대한민국 산림청. All rights reserved.</p>
+        <div class="flex gap-5 mt-3 sm:mt-0 font-medium">
+          <a href="#" class="hover:text-white transition">개인정보처리방침</a>
+          <a href="#" class="hover:text-white transition">저작권정책</a>
+          <a href="#" class="hover:text-white transition">웹접근성정책</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Dark Mode Toggle Logic
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      const themeText = document.getElementById('theme-text');
+      const themeIcon = document.getElementById('theme-icon');
+
+      if (isDark) {
+        themeText.innerText = '주간모드';
+        themeIcon.setAttribute('data-lucide', 'sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeText.innerText = '야간모드';
+        themeIcon.setAttribute('data-lucide', 'moon');
+        localStorage.setItem('theme', 'light');
+      }
+      lucide.createIcons();
+    }
+
+    // Load saved theme preference
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('theme-text').innerText = '주간모드';
+      document.getElementById('theme-icon').setAttribute('data-lucide', 'sun');
+      lucide.createIcons();
+    }
+
+    // Mission Filter logic
+    function filterCards(category) {
+      const cards = document.querySelectorAll('.mission-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // Update button styling
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-gradient-to-r', 'from-sora-500', 'to-cyan-500', 'text-white', 'shadow-md', 'shadow-sora-400/40');
+        btn.classList.add('bg-white', 'dark:bg-sora-900/60', 'text-slate-700', 'dark:text-sora-200');
+      });
+      event.currentTarget.classList.remove('bg-white', 'dark:bg-sora-900/60', 'text-slate-700', 'dark:text-sora-200');
+      event.currentTarget.classList.add('bg-gradient-to-r', 'from-sora-500', 'to-cyan-500', 'text-white', 'shadow-md', 'shadow-sora-400/40');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Modal Details Data
+    const modalDetails = {
+      safety: {
+        title: "산림 재해 안전망 구축",
+        icon: "shield-alert",
+        color: "text-rose-500 bg-rose-50 dark:bg-rose-950/60",
+        desc: "산림청은 기후변화로 인해 대형화·연중화되는 산불과 극한호우로 인한 산사태로부터 국민의 소중한 생명을 지킵니다.",
+        points: [
+          "첨단 드론감시단 및 초대형 진화헬기(수리온, 친룩 등) 투입",
+          "산불특수진화대 24시간 상시 긴급 출동태세",
+          "산사태취약지역 지정·관리 및 사방댐 연중 집중 신설",
+          "전국 산악기상망 구축을 통한 국지적 호우 및 산사태 실시간 정밀 예측"
+        ]
+      },
+      carbon: {
+        title: "2050 탄소중립 & 숲가꾸기",
+        icon: "cloud-sun",
+        color: "text-sora-500 bg-sora-50 dark:bg-sora-950/60",
+        desc: "숲은 광합성을 통해 온실가스를 빨아들이는 최고의 천연 공기청정기이자 탄소저장고입니다.",
+        points: [
+          "생애주기별 숲가꾸기를 통해 숲의 탄소 흡수력과 목재 가치 극대화",
+          "미세먼지 유입을 차단하고 맑은 바람을 도심으로 공급하는 도시바람길숲",
+          "기업 및 지자체와 함께하는 산림ESG경영 파트너십",
+          "버려지는 산림바이오매스(부산물)를 친환경 청정에너지 자원화"
+        ]
+      },
+      welfare: {
+        title: "생애주기 산림복지 서비스",
+        icon: "heart-pulse",
+        color: "text-cyan-600 bg-cyan-50 dark:bg-cyan-950/60",
+        desc: "국민이 태어나서 생을 마감할 때까지 숲과 함께 건강하고 행복한 삶을 영위하도록 전 주기 맞춤형 복지를 제공합니다.",
+        points: [
+          "임신부 숲태교 → 유아숲체험원 → 청소년 산림교육 → 치유의숲 → 수목장림",
+          "사회취약계층 숲체험 바우처 제공을 통한 산림복지 사각지대 해소",
+          "국가숲길(지리산둘레길 등) 지정 관리 및 쾌적한 보행로 확장",
+          "고령화 사회에 맞춘 치매 안심 항노화 숲치유 프로그램 운영"
+        ]
+      },
+      timber: {
+        title: "국산목재 이용 및 임업 경쟁력 강화",
+        icon: "tree-pine",
+        color: "text-amber-600 bg-amber-50 dark:bg-amber-950/60",
+        desc: "국산 목재의 사용을 늘리고 지속가능한 산림경영으로 210만 산주와 임업인의 든든한 일터와 삶터를 지킵니다.",
+        points: [
+          "목조건축 활성화를 통한 탄소저장 국산목재 제품 보급",
+          "밤, 떫은감, 대추, 표고버섯 등 청정 K-임산물 명품화",
+          "임업직불제 시행으로 산림의 공익기능을 높이는 임업인 소득 보전",
+          "산림청년 창업 지원 및 미래 스마트 임업 기계화 추진"
+        ]
+      },
+      biodiversity: {
+        title: "백두대간 보전 & 생물다양성 증진",
+        icon: "sprout",
+        color: "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/60",
+        desc: "한반도 고유의 야생식물 유전자원을 보전하고 기후위기로 인한 생물 멸종을 방지합니다.",
+        points: [
+          "지구 종말 대비 식물종자 영구보관소 '백두대간 시드볼트' 운영 (세계 단 2곳)",
+          "구상나무, 분비나무 등 한반도 멸종위기 고산 침엽수종 복원",
+          "국립백두대간수목원 및 국립세종수목원 등을 통한 식물 유전자원 증식",
+          "단절된 백두대간 마루금 및 비무장지대(DMZ) 산림생태축 복원"
+        ]
+      },
+      global: {
+        title: "국제산림협력 & K-포레스트",
+        icon: "globe",
+        color: "text-teal-600 bg-teal-50 dark:bg-teal-950/60",
+        desc: "성공적인 산림녹화 경험(K-Forest)을 국제사회와 공유하고 한반도 생태계를 평화롭게 잇습니다.",
+        points: [
+          "아시아산림협력기구(AFoCO) 주도 및 개도국 사막화 방지 조림 프로젝트",
+          "해외 산림탄소배출권(REDD+) 사업 확대를 통한 국가 온실가스 감축",
+          "황폐화된 북한 산림 복구를 위한 묘목 생산 양묘장 및 병해충 방제 협력 준비",
+          "글로벌 녹색성장을 선도하는 국제회의 및 산림외교 주도"
+        ]
+      }
+    };
+
+    function openModal(key) {
+      const data = modalDetails[key];
+      if(!data) return;
+
+      const modalContent = document.getElementById('modal-content');
+      modalContent.innerHTML = `
+        <div class="w-14 h-14 rounded-2xl ${data.color} flex items-center justify-center mb-4 shadow-sm">
+          <i data-lucide="${data.icon}" class="w-7 h-7"></i>
+        </div>
+        <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-2">${data.title}</h3>
+        <p class="text-sm text-slate-600 dark:text-sora-200 mb-6 leading-relaxed">${data.desc}</p>
+        <div class="bg-sora-50 dark:bg-sora-950/60 p-5 rounded-2xl border border-sora-200 dark:border-sora-800 space-y-3">
+          ${data.points.map(p => `
+            <div class="flex items-start gap-2.5 text-xs text-slate-700 dark:text-sora-200 font-medium">
+              <i data-lucide="check" class="w-4 h-4 text-sora-500 flex-shrink-0 mt-0.5"></i>
+              <span>${p}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      document.getElementById('modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // Interactive Carbon Calculator Logic
+    function calcCarbon() {
+      const drive = parseInt(document.getElementById('drive-input').value);
+      const elec = parseInt(document.getElementById('elec-input').value);
+      const cup = parseInt(document.getElementById('cup-input').value);
+
+      document.getElementById('drive-val').innerText = drive + ' km';
+      document.getElementById('elec-val').innerText = elec + ' kWh';
+      document.getElementById('cup-val').innerText = cup + ' 개';
+
+      const annualDrive = drive * 12 * 0.192;
+      const annualElec = elec * 12 * 0.478;
+      const annualCup = cup * 52 * 0.052;
+
+      const totalKg = Math.round(annualDrive + annualElec + annualCup);
+      const trees = Math.ceil(totalKg / 6.6);
+
+      document.getElementById('carbon-total').innerText = totalKg.toLocaleString();
+      document.getElementById('trees-needed').innerText = trees.toLocaleString();
+    }
+
+    // Quiz Data & Logic
+    const quizData = [
+      {
+        q: "Q1. 산림청은 기후변화와 재앙에 대비해 전 세계 야생식물 종자를 지하 깊은 곳에 영구 보존하는 '시드볼트(Seed Vault)'를 운영하고 있다?",
+        a: true,
+        exp: "정답은 O입니다! 경북 봉화군 국립백두대간수목원에 위치한 '백두대간 시드볼트'는 노르웨이 스발바르와 함께 전 세계에 단 둘뿐인 영구저장시설입니다."
+      },
+      {
+        q: "Q2. 산림청의 전국 자연휴양림 통합 예약시스템 공식 명칭은 '숲사랑e'이다?",
+        a: false,
+        exp: "정답은 X입니다! 전국의 국·공립 및 사립 자연휴양림을 원스톱으로 예약할 수 있는 공식 통합 플랫폼의 이름은 '숲나들e'입니다."
+      },
+      {
+        q: "Q3. 우리나라 산림은 국민 1인당 연간 약 499만 원에 달하는 공익적 가치(맑은 물, 공기정화, 산사태 방지 등)를 선물하고 있다?",
+        a: true,
+        exp: "정답은 O입니다! 국립산림과학원의 분석 결과에 따르면 우리 숲의 총 공익가치는 연간 약 259조 원에 달합니다."
+      }
+    ];
+
+    let currentQuiz = 0;
+    let score = 0;
+
+    function handleQuizAnswer(userAns) {
+      const q = quizData[currentQuiz];
+      const feedback = document.getElementById('quiz-feedback');
+      const nextBtn = document.getElementById('quiz-next');
+
+      feedback.classList.remove('hidden', 'bg-sora-100', 'text-sora-900', 'border-sora-300', 'bg-rose-100', 'text-rose-900', 'border-rose-300', 'dark:bg-sora-950', 'dark:text-cyan-300', 'dark:border-sora-700', 'dark:bg-rose-950', 'dark:text-rose-300', 'dark:border-rose-800');
+
+      if (userAns === q.a) {
+        score += 10;
+        feedback.classList.add('bg-sora-100', 'text-sora-900', 'border-sora-300', 'dark:bg-sora-950', 'dark:text-cyan-300', 'dark:border-sora-700');
+        feedback.innerHTML = `<strong>🎉 정답입니다!</strong><br>${q.exp}`;
+      } else {
+        feedback.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300', 'dark:bg-rose-950', 'dark:text-rose-300', 'dark:border-rose-800');
+        feedback.innerHTML = `<strong>아쉽네요, 틀렸습니다!</strong><br>${q.exp}`;
+      }
+
+      document.getElementById('quiz-score').innerText = `점수: ${score}점`;
+      nextBtn.classList.remove('hidden');
+    }
+
+    function nextQuiz() {
+      currentQuiz++;
+      const nextBtn = document.getElementById('quiz-next');
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+
+      if (currentQuiz < quizData.length) {
+        document.getElementById('quiz-step').innerText = `문제 ${currentQuiz + 1} / ${quizData.length}`;
+        document.getElementById('quiz-question').innerText = quizData[currentQuiz].q;
+      } else {
+        document.getElementById('quiz-step').innerText = "퀴즈 완료!";
+        document.getElementById('quiz-question').innerHTML = `
+          수고하셨습니다! 총 점수는 <span class="text-sora-600 dark:text-cyan-300 font-black text-2xl">${score}점</span>입니다.<br>
+          우리 숲과 산림청의 역할을 알아가는 유익한 시간이었길 바랍니다. 🌱
+        `;
+        document.querySelector('#quiz-box .grid').style.display = 'none';
+      }
+    }
+
+    // Run initial calc
+    calcCarbon();
+  </script>
+</body>
+</html>
